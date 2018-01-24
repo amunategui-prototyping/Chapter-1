@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn import cross_validation
- 
+
 
 # default traveler constants
 DEFAULT_EMBARKED = 'Southampton'
@@ -137,19 +137,16 @@ def submit_new_profile():
         Y_pred = lr_model.predict_proba(titanic_df_tmp[features].head(1))
         probability_of_surviving_fictional_character = Y_pred[0][1] * 100
 
-        fig = plt.figure()
-        objects = ('Average Survival Rate', 'Fictional Traveler')
+        objects = ('Average Survival Rate', 'Fictional Passenger')
         y_pos = np.arange(len(objects))
         performance = [average_survival_rate, probability_of_surviving_fictional_character]
-
-        ax = fig.add_subplot(111)
         colors = ['gray', 'blue']
         plt.bar(y_pos, performance, align='center', color = colors, alpha=0.5)
         plt.xticks(y_pos, objects)
         plt.axhline(average_survival_rate, color="r")
         plt.ylim([0,100])
         plt.ylabel('Survival Probability')
-        plt.title('How Did Your Fictional Traveler Do? \n ' + str(round(probability_of_surviving_fictional_character,2)) + '% of Surviving!')
+        plt.title('How Did Your Fictional Passenger Do? \n ' + str(round(probability_of_surviving_fictional_character,2)) + '% of Surviving!')
         img = io.BytesIO()
         plt.savefig(img, format='png')
         img.seek(0)
