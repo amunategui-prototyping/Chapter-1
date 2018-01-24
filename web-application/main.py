@@ -137,9 +137,11 @@ def submit_new_profile():
         Y_pred = lr_model.predict_proba(titanic_df_tmp[features].head(1))
         probability_of_surviving_fictional_character = Y_pred[0][1] * 100
 
-        objects = ('Average Survival Rate', 'Fictional Passenger')
+        fig = plt.figure()
+        objects = ('Average Survival Rate', 'Fictional Traveler')
         y_pos = np.arange(len(objects))
         performance = [average_survival_rate, probability_of_surviving_fictional_character]
+        ax = fig.add_subplot(111)
         colors = ['gray', 'blue']
         plt.bar(y_pos, performance, align='center', color = colors, alpha=0.5)
         plt.xticks(y_pos, objects)
