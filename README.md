@@ -1,4 +1,4 @@
-<H2>Code and and additonal content for: 
+<H2>Code and and additonal content for: </H2>
 
 <H1>Eight Classic Python Data-Science Problems Extended into Cloud-based, Interactive Web Applications</H1>
 
