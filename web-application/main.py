@@ -6,7 +6,7 @@ from wtforms import Form, TextField, TextAreaField, validators, FloatField, Inte
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
-from sklearn import cross_validation
+from sklearn.model_selection import train_test_split
 
 
 # default traveler constants
@@ -85,7 +85,7 @@ def startup():
 
     #from sklearn.metrics import accuracy_score
     features = [feat for feat in list(titanic_ready_df) if feat != 'survived']
-    X_train, X_test, y_train, y_test = cross_validation.train_test_split(titanic_ready_df[features], titanic_ready_df[['survived']], test_size=0.5, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(titanic_ready_df[features], titanic_ready_df[['survived']], test_size=0.5, random_state=42)
 
     # fit model only once
     lr_model.fit(X_train, y_train.values.ravel())
